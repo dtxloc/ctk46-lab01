@@ -6,7 +6,7 @@
 - Sử dụng **Next.js** để xây dựng ứng dụng web
 - Hiển thị thông tin cá nhân:
   - Họ tên: Đặng Thị Xuân Lộc
-  - MSSV: 2112345
+  - MSSV: 2112405
   - Lớp: CTK46
 - Có thêm phần giới thiệu và sở thích
 
