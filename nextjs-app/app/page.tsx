@@ -1,38 +1,18 @@
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8">
+    <div className="max-w-5xl mx-auto px-4 py-12">
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Xin chào! 👋</h1>
-
+        <h1 className="text-4xl font-bold mb-4">
+          Xin chào! Tôi là Đặng Thị Xuân Lộc
+        </h1>
         <p className="text-xl text-gray-600 mb-2">
-          Họ và tên: <strong>Đặng Thị Xuân Lộc</strong>
+          Sinh viên Công nghệ Thông tin - Đại học Đà Lạt
         </p>
-
-        <p className="text-xl text-gray-600 mb-2">
-          MSSV: <strong>2112405</strong>
+        <p className="text-lg text-gray-500 mb-2">MSSV: 2212405 | Lớp: CTK46</p>
+        <p className="text-lg text-gray-500">
+          Đam mê phát triển web và các công nghệ mới
         </p>
-
-        <p className="text-xl text-gray-600 mb-2">
-          Lớp: <strong>CTK46</strong>
-        </p>
-
-        <p className="text-xl text-gray-600 mb-4">
-          Tôi là sinh viên CNTT, đam mê lập trình web.
-        </p>
-
-        <div className="bg-blue-100 p-4 rounded-lg mb-4">
-          🚀 Đây là project Next.js đầu tiên của tôi!
-        </div>
-
-        <div className="bg-green-100 p-4 rounded-lg">
-          <h2 className="font-bold mb-2">Sở thích</h2>
-          <ul>
-            <li>💻 Lập trình</li>
-            <li>📚 Học công nghệ</li>
-            <li>🎮 Giải trí</li>
-          </ul>
-        </div>
       </div>
-    </main>
+    </div>
   );
 }

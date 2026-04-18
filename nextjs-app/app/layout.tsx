@@ -1,18 +1,25 @@
+import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
-export const metadata = {
-  title: "CTK46 - Lab 01",
-  description: "Bài thực hành Next.js",
+export const metadata: Metadata = {
+  title: "Portfolio — Đặng Thị Xuân Lộc",
+  description: "Website portfolio cá nhân — CTK46",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="vi">
-      <body>{children}</body>
+      <body className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
