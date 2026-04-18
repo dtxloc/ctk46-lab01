@@ -6,10 +6,8 @@ export default function BlogLayout({
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <div className="flex gap-8">
-        {/* Noi dung chinh */}
         <div className="flex-1">{children}</div>
 
-        {/* Sidebar */}
         <aside className="w-64 shrink-0">
           <div className="bg-gray-50 rounded-lg p-4">
             <h3 className="font-semibold mb-3">Danh mục</h3>
