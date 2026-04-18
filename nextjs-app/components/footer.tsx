@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="bg-gray-50 border-t mt-auto">
-      <div className="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+    <footer className="mt-auto border-t bg-gray-50 dark:border-gray-800 dark:bg-gray-900">
+      <div className="max-w-5xl mx-auto px-4 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
         <p className="mb-2">
           © 2025 — Đặng Thị Xuân Lộc | CTK46 — Các công nghệ mới trong PTPM
         </p>
@@ -10,13 +10,13 @@ export default function Footer() {
             href="https://github.com/dtxloc"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
+            className="text-emerald-700 hover:underline dark:text-emerald-300"
           >
             GitHub
           </a>
           <a
             href="mailto:2212405@dlu.edu.vn"
-            className="text-blue-600 hover:underline"
+            className="text-emerald-700 hover:underline dark:text-emerald-300"
           >
             2212405@dlu.edu.vn
           </a>

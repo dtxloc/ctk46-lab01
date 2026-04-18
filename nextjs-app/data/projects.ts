@@ -4,6 +4,7 @@ export interface Project {
   description: string;
   tech: string[];
   detail: string;
+  status: "Hoàn thành" | "Đang phát triển";
 }
 
 export const projects: Project[] = [
@@ -13,6 +14,7 @@ export const projects: Project[] = [
     description:
       "Website giới thiệu bản thân được xây dựng bằng Next.JS và Tailwind CSS",
     tech: ["Next.JS", "Tailwind CSS", "TypeScript"],
+    status: "Đang phát triển",
     detail:
       "Dự án tập trung vào App Router, layout lồng nhau, dynamic routes và triển khai UI responsive. Tôi dùng Tailwind CSS để xây dựng giao diện nhanh và nhất quán.",
   },
@@ -22,6 +24,7 @@ export const projects: Project[] = [
     description:
       "Ứng dụng CRUD quản lý sinh viên, điểm số và lớp học cho môn học cơ sở ngành",
     tech: ["React", "Node.js", "MySQL"],
+    status: "Hoàn thành",
     detail:
       "Hệ thống gồm module quản lý sinh viên, điểm môn học và thống kê cơ bản. Backend dùng Node.js + MySQL với API REST, frontend React hiển thị dữ liệu theo bảng.",
   },
@@ -31,6 +34,7 @@ export const projects: Project[] = [
     description:
       "Ứng dụng quản lý công việc với React, Local Storage và lọc theo trạng thái",
     tech: ["React", "CSS Modules", "JavaScript"],
+    status: "Hoàn thành",
     detail:
       "Ứng dụng cho phép tạo, cập nhật, đánh dấu hoàn thành và lọc công việc theo trạng thái. Dữ liệu được lưu cục bộ bằng Local Storage để giữ trạng thái sau khi reload.",
   },
@@ -40,6 +44,7 @@ export const projects: Project[] = [
     description:
       "API quản lý sản phẩm và danh mục với Node.js, Express và MongoDB",
     tech: ["Node.js", "Express", "MongoDB"],
+    status: "Đang phát triển",
     detail:
       "API hỗ trợ CRUD cho sản phẩm và danh mục, có phân trang và validate dữ liệu đầu vào. Dự án giúp mình nắm rõ cấu trúc controller-service-repository.",
   },
