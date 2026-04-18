@@ -10,6 +10,13 @@ export default async function ProjectDetailPage({
   params,
 }: ProjectDetailPageProps) {
   const { id } = await params;
+
+  // Intentional test hook: visit /projects/test-error to observe app/error.tsx.
+  if (id === "test-error") {
+    const brokenValue: { run?: () => void } | undefined = undefined;
+    brokenValue.run();
+  }
+
   const project = getProjectById(id);
 
   if (!project) {
