@@ -1,6 +1,13 @@
 import DeleteButton from "@/components/delete-button";
 import GuestbookForm from "@/components/guestbook-form";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { guestbookEntries } from "@/data/guestbook";
+
+function getInitial(name: string) {
+  return name.trim().charAt(0).toUpperCase() || "?";
+}
 
 export default function GuestbookPage() {
   const entries = guestbookEntries;
@@ -19,31 +26,43 @@ export default function GuestbookPage() {
           {entries.length} lời nhắn
         </p>
 
-        {entries.map((entry) => (
-          <div
-            key={entry.id}
-            className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-sm transition-shadow"
-          >
-            <div className="flex items-center justify-between mb-2">
-              <span className="font-semibold text-gray-800 dark:text-gray-100">
-                {entry.name}
-              </span>
-              <div className="flex items-center gap-3">
-                <span className="text-xs text-gray-400 dark:text-gray-500">
-                  {new Date(entry.createdAt).toLocaleDateString("vi-VN")}
-                </span>
-                <DeleteButton id={entry.id} />
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">Danh sách lời nhắn</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {entries.map((entry, index) => (
+              <div key={entry.id}>
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2">
+                    <Avatar size="sm">
+                      <AvatarFallback>{getInitial(entry.name)}</AvatarFallback>
+                    </Avatar>
+                    <span className="font-semibold text-gray-800 dark:text-gray-100">
+                      {entry.name}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs text-gray-400 dark:text-gray-500">
+                      {new Date(entry.createdAt).toLocaleDateString("vi-VN")}
+                    </span>
+                    <DeleteButton id={entry.id} />
+                  </div>
+                </div>
+                <p className="text-gray-600 dark:text-gray-300">
+                  {entry.message}
+                </p>
+                {index < entries.length - 1 && <Separator className="mt-3" />}
               </div>
-            </div>
-            <p className="text-gray-600 dark:text-gray-300">{entry.message}</p>
-          </div>
-        ))}
+            ))}
 
-        {entries.length === 0 && (
-          <p className="text-center text-gray-400 py-8">
-            Chưa có lời nhắn nào. Hãy là người đầu tiên!
-          </p>
-        )}
+            {entries.length === 0 && (
+              <p className="text-center text-gray-400 py-8">
+                Chưa có lời nhắn nào. Hãy là người đầu tiên!
+              </p>
+            )}
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

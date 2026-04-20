@@ -3,6 +3,8 @@
 import { ReactNode } from "react";
 import { useFormStatus } from "react-dom";
 
+import { Button } from "@/components/ui/button";
+
 interface SubmitButtonProps {
   idleText: ReactNode;
   pendingText: ReactNode;
@@ -17,15 +19,15 @@ export default function SubmitButton({
   const { pending } = useFormStatus();
 
   return (
-    <button
+    <Button
       type="submit"
       disabled={pending}
       className={
         className ||
-        "bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        "bg-emerald-600 text-white hover:bg-emerald-700 dark:bg-emerald-500 dark:text-white dark:hover:bg-emerald-400"
       }
     >
       {pending ? pendingText : idleText}
-    </button>
+    </Button>
   );
 }

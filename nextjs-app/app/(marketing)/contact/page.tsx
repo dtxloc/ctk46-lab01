@@ -4,6 +4,11 @@ import { useActionState, useState } from "react";
 
 import { ContactFormState, sendContactMessage } from "./actions";
 import SubmitButton from "@/components/submit-button";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 const initialState: ContactFormState = {
   success: false,
@@ -64,106 +69,90 @@ function ContactFormContent({ onSendAnother }: { onSendAnother: () => void }) {
 
         <div className="md:col-span-2">
           {state.success ? (
-            <div className="bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-900 rounded-lg p-6 text-center">
-              <h3 className="text-green-700 dark:text-green-400 font-semibold text-lg mb-2">
+            <Alert className="p-6 text-center border-green-200 bg-green-50 dark:border-green-900 dark:bg-green-950/30">
+              <AlertTitle className="text-green-700 dark:text-green-400 text-lg mb-2">
                 Gửi thành công!
-              </h3>
-              <p className="text-green-600 dark:text-green-300">
+              </AlertTitle>
+              <AlertDescription className="text-green-600 dark:text-green-300">
                 Cảm ơn bạn đã liên hệ. Tôi sẽ phản hồi sớm nhất có thể.
-              </p>
-              <button
+              </AlertDescription>
+              <Button
                 type="button"
                 onClick={onSendAnother}
-                className="mt-4 rounded-lg border border-emerald-500 text-emerald-700 dark:text-emerald-300 px-4 py-2 text-sm hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-colors"
+                variant="outline"
+                className="mt-4 border-emerald-500 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/30"
               >
                 Gửi tin nhắn khác
-              </button>
-            </div>
+              </Button>
+            </Alert>
           ) : (
             <form action={formAction} className="space-y-4">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
-                >
-                  Họ và tên
-                </label>
-                <input
+              <Alert>
+                <AlertTitle>Thông tin phản hồi</AlertTitle>
+                <AlertDescription>
+                  Vui lòng điền đầy đủ thông tin để tôi có thể phản hồi nhanh
+                  nhất.
+                </AlertDescription>
+              </Alert>
+
+              <div className="space-y-2">
+                <Label htmlFor="name">Họ và tên</Label>
+                <Input
                   id="name"
                   name="name"
                   type="text"
                   placeholder="Nguyễn Văn A"
                   required
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
                 {state.errors?.name && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {state.errors.name[0]}
-                  </p>
+                  <p className="text-red-500 text-sm">{state.errors.name[0]}</p>
                 )}
               </div>
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
-                >
-                  Email
-                </label>
-                <input
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
                   id="email"
                   name="email"
                   type="email"
                   placeholder="email@example.com"
                   required
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
                 {state.errors?.email && (
-                  <p className="text-red-500 text-sm mt-1">
+                  <p className="text-red-500 text-sm">
                     {state.errors.email[0]}
                   </p>
                 )}
               </div>
 
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
-                >
-                  Tiêu đề
-                </label>
-                <input
+              <div className="space-y-2">
+                <Label htmlFor="subject">Tiêu đề</Label>
+                <Input
                   id="subject"
                   name="subject"
                   type="text"
                   placeholder="Chủ đề bạn muốn trao đổi"
                   required
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
                 {state.errors?.subject && (
-                  <p className="text-red-500 text-sm mt-1">
+                  <p className="text-red-500 text-sm">
                     {state.errors.subject[0]}
                   </p>
                 )}
               </div>
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
-                >
-                  Nội dung
-                </label>
-                <textarea
+              <div className="space-y-2">
+                <Label htmlFor="message">Nội dung</Label>
+                <Textarea
                   id="message"
                   name="message"
                   placeholder="Viết nội dung tin nhắn..."
                   required
                   rows={5}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
+                  className="resize-none"
                 />
                 {state.errors?.message && (
-                  <p className="text-red-500 text-sm mt-1">
+                  <p className="text-red-500 text-sm">
                     {state.errors.message[0]}
                   </p>
                 )}

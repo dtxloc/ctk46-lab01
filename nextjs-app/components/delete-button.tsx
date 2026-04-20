@@ -3,28 +3,70 @@
 import { useState } from "react";
 
 import { deleteGuestbookEntry } from "@/app/(marketing)/guestbook/actions";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function DeleteButton({ id }: { id: string }) {
   const [isDeleting, setIsDeleting] = useState(false);
+  const [open, setOpen] = useState(false);
 
   async function handleDelete() {
-    if (!window.confirm("Bạn có chắc muốn xóa lời nhắn này?")) {
-      return;
+    try {
+      setIsDeleting(true);
+      await deleteGuestbookEntry(id);
+      setOpen(false);
+    } finally {
+      setIsDeleting(false);
     }
-
-    setIsDeleting(true);
-    await deleteGuestbookEntry(id);
-    setIsDeleting(false);
   }
 
   return (
-    <button
-      type="button"
-      onClick={handleDelete}
-      disabled={isDeleting}
-      className="text-xs text-red-500 hover:text-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-    >
-      {isDeleting ? "Đang xóa..." : "Xóa"}
-    </button>
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button
+          type="button"
+          variant="ghost"
+          size="sm"
+          className="h-auto px-1 py-0 text-xs text-red-500 hover:text-red-700"
+          disabled={isDeleting}
+        >
+          {isDeleting ? "Đang xóa..." : "Xóa"}
+        </Button>
+      </DialogTrigger>
+
+      <DialogContent showCloseButton={false}>
+        <DialogHeader>
+          <DialogTitle>Xóa lời nhắn?</DialogTitle>
+          <DialogDescription>
+            Hành động này không thể hoàn tác. Bạn có chắc muốn xóa lời nhắn này?
+          </DialogDescription>
+        </DialogHeader>
+
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button type="button" variant="outline" disabled={isDeleting}>
+              Hủy
+            </Button>
+          </DialogClose>
+          <Button
+            type="button"
+            variant="destructive"
+            onClick={handleDelete}
+            disabled={isDeleting}
+          >
+            {isDeleting ? "Đang xóa..." : "Xác nhận xóa"}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 }
