@@ -13,8 +13,7 @@ export default async function ProjectDetailPage({
 
   // Intentional test hook: visit /projects/test-error to observe app/error.tsx.
   if (id === "test-error") {
-    const brokenValue: { run?: () => void } | undefined = undefined;
-    brokenValue.run();
+    throw new Error("Intentional project error for testing app/error.tsx");
   }
 
   const project = getProjectById(id);
