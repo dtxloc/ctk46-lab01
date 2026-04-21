@@ -28,8 +28,14 @@ export default function HomePage() {
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Link
-            href="/projects"
+            href="/countries"
             className="rounded-lg bg-emerald-600 px-6 py-3 text-white shadow-sm transition-colors hover:bg-emerald-700"
+          >
+            Khám phá quốc gia
+          </Link>
+          <Link
+            href="/projects"
+            className="rounded-lg border border-gray-300 px-6 py-3 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"
           >
             Xem dự án
           </Link>
